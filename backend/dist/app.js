@@ -7,6 +7,6 @@ const app = express();
 app.use(express.json());
 // remove for prod
 app.use(morgan("dev"));
-app.use("api/v1", appRouter);
+app.use("/api/v1", appRouter);
 export default app;
 //# sourceMappingURL=app.js.map
