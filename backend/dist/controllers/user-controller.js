@@ -22,7 +22,23 @@ export const userSignUp = async (req, res, next) => {
         const hashedPassword = await hash(password, 10);
         const user = new User({ name, email, password: hashedPassword });
         user.save();
-        // create token and store
+        // create token and store cookie
+        res.clearCookie(COOKIE_NAME, {
+            path: "/",
+            domain: "localhost",
+            httpOnly: true,
+            signed: true,
+        });
+        const token = createToken(user._id.toString(), user.email, "7d"); // 7 days valid, from chatgpt
+        const expires = new Date();
+        expires.setDate(expires.getDate() + 7);
+        res.cookie(COOKIE_NAME, token, {
+            path: "/",
+            domain: "localhost", // would change domain if deployed
+            expires,
+            httpOnly: true,
+            signed: true
+        });
         return res.status(201).json({ message: "OK", id: user._id.toString() });
     }
     catch (error) {
