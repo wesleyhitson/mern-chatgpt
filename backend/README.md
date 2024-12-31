@@ -9,8 +9,10 @@ It's a completely secure application using JWT Tokens, HTTP-Only Cookies, Signed
 
 To run the application locally, cd into the `backend` dir and run `npm run dev`.
 
+To create the frontend, run `npm create vite@latest`, install if needed, and then go through the options. I named the project "frontend", so there's a backend dir and a frontend dir. Then, follow the instructions (`cd frontend`, `npm i`, `npm run dev`)
+
 Following the tutorial from FreeCodeCamp: https://www.youtube.com/watch?v=wrHTcjSZQ1Y&list=WL&index=1
 
 Key insights:
 - In JavaScript, there is a difference between a `String` and a `string`. The former is an object (and thus can have properties), and the latter is a primitive, and is immutable. `string` is apparently generally more performant, and should be used in method signatures, which is my main use case other than variable declaration. However, `String` should be used with Mongoose.
-
+- `/frontend/src/main.tsx` is the entry point of the frontend.
