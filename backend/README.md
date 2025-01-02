@@ -9,7 +9,11 @@ It's a completely secure application using JWT Tokens, HTTP-Only Cookies, Signed
 
 To run the application locally, cd into the `backend` dir and run `npm run dev`.
 
-To create the frontend, run `npm create vite@latest`, install if needed, and then go through the options. I named the project "frontend", so there's a backend dir and a frontend dir. Then, follow the instructions (`cd frontend`, `npm i`, `npm run dev`)
+To create the frontend, run `npm create vite@latest`, install if needed, and then go through the options. I named the project "frontend", so there's a backend dir and a frontend dir. Then, follow the instructions (`cd frontend`, `npm i`, `npm run dev`).
+
+We are going to use [Material UI](https://mui.com) to style the application. We are also going to use [React Icons](https://react-icons.github.io/react-icons/), [React Router Dom](https://reactrouter.com/), and [React Hot Toast](https://react-hot-toast.com/).
+
+All of those can be installed at once, so in the `frontend` directory, run `npm install @mui/material @emotion/react @emotion/styled react-icons react-router-dom react-hot-toast`.
 
 Following the tutorial from FreeCodeCamp: https://www.youtube.com/watch?v=wrHTcjSZQ1Y&list=WL&index=1
 
