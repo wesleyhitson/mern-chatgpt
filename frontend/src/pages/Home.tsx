@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div>
             <h1>Welcome to the Home Page</h1>
-            <p>This is the home page of the MERN-AI chatbot application.</p>
+            <p>This is the home page of the MERN-AI chatbot application. Test.</p>
         </div>
     );
 };
