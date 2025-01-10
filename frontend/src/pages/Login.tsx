@@ -1,12 +1,13 @@
 import React from "react";
 import { IoIosLogIn } from "react-icons/io"
 import { Box, Typography, Button } from '@mui/material';
+import CustomizedInput from '../components/shared/CustomizedInput';
 
 const Login = () => {
     return (
         <Box 
-            width={100%}
-            height={100%}
+            width={"100%"}
+            height={"100%"}
             display="flex"
             flex={1}
         >
