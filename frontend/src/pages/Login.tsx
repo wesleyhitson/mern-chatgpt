@@ -2,8 +2,16 @@ import React from "react";
 import { IoIosLogIn } from "react-icons/io"
 import { Box, Typography, Button } from '@mui/material';
 import CustomizedInput from '../components/shared/CustomizedInput';
+import { BiBorderRadius } from "react-icons/bi";
 
 const Login = () => {
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const email = formData.get("email") as string;
+        const password = formData.get("email") as string;
+        console.log(email, password);
+    }
     return (
         <Box 
             width={"100%"}
@@ -27,7 +35,15 @@ const Login = () => {
                 ml={"auto"}
                 mt={16}
             >
-                <form style={{width: "100%"}}>
+                <form 
+                    onSubmit={(handleSubmit)}
+                    style={{
+                        margin: "auto",
+                        padding: "30px",
+                        boxShadow: "10px 10px 20px #000",
+                        borderRadius: "10px",
+                        border: "none",
+                    }}>
                     <Box
                         sx={{
                             display: "flex", 
