@@ -42,3 +42,4 @@ public/
 
 # Env vars
 */.env
+.env
