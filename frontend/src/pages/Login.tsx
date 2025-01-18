@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const email = formData.get("email") as string;
-        const password = formData.get("email") as string;
+        const password = formData.get("password") as string;
         try {
             toast.loading("Signing in...", {id: "login" }); // same ID for all toasts
             await auth?.login(email, password);
