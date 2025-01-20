@@ -60,7 +60,8 @@ export const userSignUp = async (
 export const userLogin = async (
     req: Request, 
     res: Response, 
-    next: NextFunction) => {
+    next: NextFunction
+) => {
     // user login
     try {
         const { email, password } = req.body;
@@ -92,6 +93,26 @@ export const userLogin = async (
         }); 
 
 
+        return res.status(200).json({ message: "OK", name: user.name, email: user.email });
+    } catch (error) {
+        console.log(error);
+        return res.status(200).json({ message: "ERROR", cause: error.message });
+    }
+};
+
+export const verifyUser = async (
+    req: Request, 
+    res: Response, 
+    next: NextFunction
+) => {
+    try {
+        const user = await User.findById({ email: res.locals.jwtData.id });
+        if (!user) {
+            return res.status(401).send("User not registered or token malfunctioned");
+        }
+        if (user._id.toString() !== res.locals.jwtData.id) {
+            return res.status(401).send("Permissions didn't match");
+        }
         return res.status(200).json({ message: "OK", name: user.name, email: user.email });
     } catch (error) {
         console.log(error);
