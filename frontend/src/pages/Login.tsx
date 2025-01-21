@@ -61,7 +61,8 @@ const Login = () => {
                         }}
                     >
                         <Typography 
-                            variant="h4" textAlign="center"
+                            variant="h4" 
+                            textAlign="center"
                             padding={2}
                             fontWeight={600}
                         >

@@ -14,11 +14,11 @@ axios.defaults.withCredentials = true;
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Work Sans', 
-    allVariants: {color: '#000'}
+    fontFamily: "Work Sans", 
+    allVariants: {color: "white"}
   },
 });
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
