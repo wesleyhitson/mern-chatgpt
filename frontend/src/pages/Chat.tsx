@@ -1,11 +1,17 @@
+import { Box } from '@mui/material';
 import React from 'react';
 
 const Chat = () => {
     return (
-        <div>
-            <h1>Welcome to the Chat Page</h1>
-            <p>This is the home page of the MERN-AI chatbot application.</p>
-        </div>
+        <Box
+            sx={{
+                display: "flex",
+                flex: 1,
+                height: "100%",
+                width: "100%",
+                mt: 3,
+                gap: 3,
+            }}></Box>
     );
 };
 
