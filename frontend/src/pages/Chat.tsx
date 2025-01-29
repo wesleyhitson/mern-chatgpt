@@ -1,8 +1,9 @@
 import { Box, Avatar } from '@mui/material';
 import React from 'react';
+import { useAuth } from '../context/AuthContext';
 
 const Chat = () => {
-    const auth = 
+    const auth = useAuth();
     return (
         <Box
             sx={{
@@ -30,7 +31,8 @@ const Chat = () => {
                             color: "black",
                             fontWeight: 700
                         }}>
-
+                            { auth?.user?.name[0] }
+                            {/* { auth?.user?.name.includes(" ") ? auth?.user?.name.split(" ")[1][0] : "" } */}
                         </Avatar>
                     </Box>
                 </Box>
