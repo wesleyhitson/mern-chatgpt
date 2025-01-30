@@ -2,6 +2,9 @@ import { Box, Avatar, Typography, Button } from '@mui/material';
 import red from '@mui/material/colors/red';
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
+const chatMessages = [
+    
+]
 
 const Chat = () => {
     const auth = useAuth();
@@ -15,7 +18,11 @@ const Chat = () => {
                 mt: 3,
                 gap: 3,
             }}>
-                <Box sx={{ display: {md: "flex", xs: "none", sm: "none"} }}>
+                <Box sx={{ 
+                    display: {md: "flex", xs: "none", sm: "none"},
+                    flex: 0.2,
+                    flexDirection: "column"
+                    }}>
                     <Box sx={{ 
                         display: "flex", 
                         width: "100%", 
@@ -63,6 +70,37 @@ const Chat = () => {
                         }}>
                             Clear Conversation
                         </Button>
+                    </Box>
+                </Box>
+                <Box sx={{
+                    display: "flex",
+                    flex: {md: 0.8, xs: 1, sm: 1},
+                    flexDirection: "column",
+                    px: 3
+                }}>
+                    <Typography sx={{
+                        fontSize: "40px",
+                        color: "white",
+                        mb: 2,
+                        mx: "auto",
+                        fontWeight: "600"
+                    }}
+                    >
+                        Model - GPT 3.5 Turbo
+                    </Typography>
+                    <Box sx={{
+                        width: "100%",
+                        height: "60vh",
+                        borderRadius: 3,
+                        mx: "auto",
+                        display: "flex",
+                        flexDirection: "column",
+                        overflow: "scroll",
+                        overflowX: "hidden",
+                        overflowY: "auto",
+                        scrollBehavior: "smooth"
+                    }}>
+
                     </Box>
                 </Box>
             </Box>
