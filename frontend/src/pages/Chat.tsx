@@ -3,7 +3,22 @@ import red from '@mui/material/colors/red';
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 const chatMessages = [
-    
+    {
+        "role": "user",
+        "content": "Hello, how are you?"
+    },
+    {
+        "role": "assistant",
+        "content": "Sure! I can help you with that. What do you want to know?"
+    },
+    {
+        "role": "user",
+        "content": "Hello, how are you?"
+    },
+    {
+        "role": "user",
+        "content": "I am great"
+    },
 ]
 
 const Chat = () => {
@@ -16,7 +31,7 @@ const Chat = () => {
                 height: "100%",
                 width: "100%",
                 mt: 3,
-                gap: 3,
+                gap: 3
             }}>
                 <Box sx={{ 
                     display: {md: "flex", xs: "none", sm: "none"},
@@ -45,16 +60,16 @@ const Chat = () => {
                         <Typography sx={{
                             mx: "auto",
                             fontFamily: "Work Sans",
-                        }}>
-                            You are talking to a chatbot.
+                        }}
+                        >You are talking to a chatbot.
                         </Typography>
                         <Typography sx={{
                             mx: "auto",
                             my: 4,
                             padding: 3,
                             fontFamily: "Work Sans",
-                        }}>
-                            You can ask a program related to general knowledge, but avoid sharing personal information.
+                        }}
+                        >You can ask a program related to general knowledge, but avoid sharing personal information.
                         </Typography>
                         <Button sx={{
                             width: "100px",
@@ -67,8 +82,8 @@ const Chat = () => {
                             ":hover": {
                                 bgcolor: red.A400,
                             }
-                        }}>
-                            Clear Conversation
+                        }}
+                        >Clear Conversation
                         </Button>
                     </Box>
                 </Box>
@@ -85,8 +100,7 @@ const Chat = () => {
                         mx: "auto",
                         fontWeight: "600"
                     }}
-                    >
-                        Model - GPT 3.5 Turbo
+                    >Model - GPT 3.5 Turbo
                     </Typography>
                     <Box sx={{
                         width: "100%",
@@ -99,8 +113,10 @@ const Chat = () => {
                         overflowX: "hidden",
                         overflowY: "auto",
                         scrollBehavior: "smooth"
-                    }}>
-
+                    }}
+                    >{chatMessages.map((chat) => (
+                    <div> { chat.content }</div>
+                ))}
                     </Box>
                 </Box>
             </Box>
