@@ -1,31 +1,27 @@
 import { Box, Avatar, Typography, Button, IconButton } from '@mui/material';
 import red from '@mui/material/colors/red';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ChatItem from '../components/chat/ChatItem';
 import { IoMdSend } from "react-icons/io";
 
-const chatMessages = [
-    {
-        "role": "user",
-        "content": "Hello, how are you?"
-    },
-    {
-        "role": "assistant",
-        "content": "Sure! I can help you with that. What do you want to know?"
-    },
-    {
-        "role": "user",
-        "content": "Hello, how are you?"
-    },
-    {
-        "role": "assistant",
-        "content": "I am great"
-    },
-]
-
+type Message = {
+    role: "user" | "assistant";
+    content: string;
+}
 const Chat = () => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const auth = useAuth();
+    const [chatMessages, setChatMessages] = useState<Message[]>([]);
+    const handleSubmit = async () => {
+        console.log(inputRef.current?.value);
+        const content = inputRef.current?.value as string;
+        if (inputRef && inputRef.current) {
+            inputRef.current.value = "";
+        }
+        const newMessage: Message = { content, role: "user" };
+        setChatMessages((prev) => [...prev, newMessage]);
+    };
     return (
         <Box
             sx={{
@@ -118,6 +114,7 @@ const Chat = () => {
                         scrollBehavior: "smooth"
                     }}
                     >{chatMessages.map((chat, index) => (
+                        //@ts-ignore  // this ignores type checking
                         <ChatItem content = {chat.content} role = {chat.role} key={index} />
                     ))}
                 </Box>
@@ -130,17 +127,20 @@ const Chat = () => {
                     marginRight: "auto"
                 }}>
                     {" "}
-                    <input type="text" style={{ 
-                        width: "100%", 
-                        backgroundColor: "transparent", 
-                        padding: "10px", 
-                        border: "none", 
-                        outline: "none",
-                        color: "white",
-                        fontSize: "20px"}}>
-
+                    <input
+                        ref={inputRef}
+                        type="text" 
+                        style={{ 
+                            width: "100%", 
+                            backgroundColor: "transparent", 
+                            padding: "10px", 
+                            border: "none", 
+                            outline: "none",
+                            color: "white",
+                            fontSize: "20px"
+                        }}>
                     </input>
-                    <IconButton sx={{
+                    <IconButton onClick={handleSubmit} sx={{
                         ml: "auto", 
                         color: "white"
                     }}>
