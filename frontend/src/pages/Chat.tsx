@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ChatItem from '../components/chat/ChatItem';
 import { IoMdSend } from "react-icons/io";
+import { sendChatRequest } from '../helpers/api-communicator';
 
 type Message = {
     role: "user" | "assistant";
@@ -21,6 +22,8 @@ const Chat = () => {
         }
         const newMessage: Message = { content, role: "user" };
         setChatMessages((prev) => [...prev, newMessage]);
+        const chatData = await sendChatRequest(content);
+        setChatMessages([...chatData.chats]);
     };
     return (
         <Box
