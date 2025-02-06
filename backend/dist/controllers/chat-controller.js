@@ -3,6 +3,7 @@ import { configureOpenAI } from "../config/openai-config.js";
 import { OpenAIApi } from "openai";
 export const generateChatCompletion = async (req, res, next) => {
     const { prompt } = req.body;
+    console.log(prompt);
     try {
         const user = await User.findById(res.locals.jwtData.id);
         if (!user) {
@@ -13,12 +14,13 @@ export const generateChatCompletion = async (req, res, next) => {
         // get all user chats
         const chats = user.chats.map(({ role, content }) => ({ role, content }));
         chats.push({ content: prompt, role: "user" });
-        user.chats.push({ conten: prompt, role: "user" });
+        user.chats.push({ content: prompt, role: "user" });
+        console.log("a");
         // send all chats with new one to API
         const config = configureOpenAI();
         const openai = new OpenAIApi(config);
         const chatResponse = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4o-mini",
             messages: chats
         });
         user.chats.push(chatResponse.data.choices[0].message);

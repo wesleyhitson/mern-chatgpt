@@ -1,6 +1,7 @@
 import { body, validationResult } from "express-validator";
 // custom validator
 export const validate = (validations) => {
+    console.log("b");
     return async (req, res, next) => {
         for (let validation of validations) {
             const result = await validation.run(req);
@@ -27,6 +28,6 @@ export const signupValidator = [
     ...loginValidator,
 ];
 export const chatPromptValidator = [
-    body("prompt").notEmpty().withMessage("Prompt is required"),
+    body("message").notEmpty().withMessage("Prompt is required"),
 ];
 //# sourceMappingURL=validators.js.map

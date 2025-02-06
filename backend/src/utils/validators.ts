@@ -3,6 +3,7 @@ import { body, ValidationChain, validationResult } from "express-validator";
 
 // custom validator
 export const validate = (validations: ValidationChain[]) => {
+    console.log("b");
     return async (req: Request, res: Response, next: NextFunction) => {
         for (let validation of validations) {
             const result = await validation.run(req);
@@ -32,5 +33,5 @@ export const signupValidator = [
 ];
 
 export const chatPromptValidator = [
-    body("prompt").notEmpty().withMessage("Prompt is required"),
+    body("message").notEmpty().withMessage("Prompt is required"),
 ];

@@ -15,7 +15,7 @@ const Chat = () => {
     const auth = useAuth();
     const [chatMessages, setChatMessages] = useState<Message[]>([]);
     const handleSubmit = async () => {
-        console.log(inputRef.current?.value);
+        // console.log(inputRef.current?.value);
         const content = inputRef.current?.value as string;
         if (inputRef && inputRef.current) {
             inputRef.current.value = "";
