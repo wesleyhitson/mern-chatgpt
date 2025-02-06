@@ -8,8 +8,9 @@ export const generateChatCompletion = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { prompt } = req.body;
-    console.log(prompt);
+    console.log("b");
+    const { message } = req.body;
+    console.log(message);
     try {
         const user = await User.findById(res.locals.jwtData.id);
         if (!user) {
@@ -19,8 +20,8 @@ export const generateChatCompletion = async (
         }
         // get all user chats
         const chats = user.chats.map(({role, content}) => ({role, content})) as ChatCompletionRequestMessage[];
-        chats.push({content: prompt, role: "user"});
-        user.chats.push({content: prompt, role: "user"});
+        chats.push({content: message, role: "user"});
+        user.chats.push({content: message, role: "user"});
         console.log("a");
         // send all chats with new one to API
         const config = configureOpenAI();
