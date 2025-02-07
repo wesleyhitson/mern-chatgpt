@@ -102,7 +102,7 @@ const Chat = () => {
                         mx: "auto",
                         fontWeight: "600"
                     }}
-                    >Model - GPT 3.5 Turbo
+                    >Model - GPT 4o Mini
                     </Typography>
                     <Box sx={{
                         width: "100%",
