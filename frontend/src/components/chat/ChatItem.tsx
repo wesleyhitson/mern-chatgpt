@@ -12,7 +12,19 @@ function extractCodeFromString(message: string) {
 }
 
 function isCodeBlock(str: string) {
-    return true;
+    if (
+        str.includes("=") ||
+        str.includes(";") ||
+        str.includes("[") ||
+        str.includes("]") ||
+        str.includes("{") ||
+        str.includes("}") ||
+        str.includes("#") ||
+        str.includes("//")
+    ) {
+        return true;
+    }
+    return false;
 }
 
 const ChatItem = ({ 
@@ -51,14 +63,28 @@ const ChatItem = ({
         </Box>
     ) : (
         <Box 
-            sx={{display: "flex", p:2, bgcolor: "#004d56", gap: 2}}
+            sx={{display: "flex", p:2, bgcolor: "#004d56", gap: 2, my: 2}}
             >
                 <Avatar sx={{ ml: "0" , bgcolor: "black", color: "white"}}>
                     { auth?.user?.name[0] }
                     {/* { auth?.user?.name.includes(" ") ? auth?.user?.name.split(" ")[1][0] : "" } */}
                 </Avatar>
                 <Box>
-                    <Typography fontSize = {"20px"}>{content}</Typography>
+                    {!messageBlocks && (
+                        <Typography sx={{ fontSize: "20px" }}>{ content }</Typography>
+                    )}
+                    {messageBlocks 
+                        && messageBlocks.length 
+                        && messageBlocks.map((block) => 
+                            isCodeBlock(block) ? (
+                                <SyntaxHighlighter style={coldarkCold} language="javascript">
+                                    {block}
+                                </SyntaxHighlighter>
+                                ) : (
+                                    <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
+                                )
+                        )
+                    }
                 </Box>
         </Box>
     );
