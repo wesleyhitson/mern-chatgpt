@@ -30,7 +30,8 @@ const Chat = () => {
     useLayoutEffect(() => {
         if (auth?.isLoggedIn && auth.user) {
             toast.loading("Loading Chats", {id: "loadchats"});
-            getUserChats().then((data) => {
+            getUserChats()
+            .then((data) => {
                 setChatMessages([...data.chats]);
                 toast.success("Successfully "
                 )
@@ -38,7 +39,7 @@ const Chat = () => {
                 toast.error("Error while loading chats", {id: "loadchats"});
             });
         }
-    }, []);
+    }, [auth]);
     return (
         <Box
             sx={{
