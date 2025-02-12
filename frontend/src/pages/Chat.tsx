@@ -4,7 +4,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ChatItem from '../components/chat/ChatItem';
 import { IoMdSend } from "react-icons/io";
-import { getUserChats, sendChatRequest } from '../helpers/api-communicator';
+import { deleteUserChats, getUserChats, sendChatRequest } from '../helpers/api-communicator';
 import toast from 'react-hot-toast';
 
 type Message = {
@@ -26,6 +26,17 @@ const Chat = () => {
         const chatData = await sendChatRequest(content);
         setChatMessages([...chatData.chats]);
     };
+    const handleDeleteChats = async () => {
+        try {
+            toast.loading("Deleting chats", {id: "deletechats "});
+            await deleteUserChats();
+            setChatMessages([]);
+            toast.success("Deleted chats successfully", {id: "deletechats "});
+        } catch (error) {
+            console.log(error);
+            toast.error("Error while deleting chats", {id: "deletechats "});
+        }
+    }
 
     useLayoutEffect(() => {
         if (auth?.isLoggedIn && auth.user) {
@@ -71,7 +82,7 @@ const Chat = () => {
                             color: "black",
                             fontWeight: 700
                         }}>
-                            { auth?.user?.name[0] }
+                            {/* { auth?.user?.name[0] } */}
                             {/* { auth?.user?.name.includes(" ") ? auth?.user?.name.split(" ")[1][0] : "" } */}
                         </Avatar>
                         <Typography sx={{
@@ -88,7 +99,9 @@ const Chat = () => {
                         }}
                         >You can ask a program related to general knowledge, but avoid sharing personal information.
                         </Typography>
-                        <Button sx={{
+                        <Button 
+                            onClick={handleDeleteChats} 
+                            sx={{
                             width: "100px",
                             mx: "auto",
                             my: "auto",

@@ -106,7 +106,7 @@ export const verifyUser = async (
     next: NextFunction
 ) => {
     try {
-        const user = await User.findById({ email: res.locals.jwtData.id });
+        const user = await User.findById(res.locals.jwtData.id);
         if (!user) {
             return res.status(401).send("User not registered or token malfunctioned");
         }

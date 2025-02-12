@@ -83,7 +83,7 @@ export const userLogin = async (req, res, next) => {
 };
 export const verifyUser = async (req, res, next) => {
     try {
-        const user = await User.findById({ email: res.locals.jwtData.id });
+        const user = await User.findById(res.locals.jwtData.id);
         if (!user) {
             return res.status(401).send("User not registered or token malfunctioned");
         }

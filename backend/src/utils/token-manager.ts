@@ -15,6 +15,7 @@ export const verifyToken = async (
     res: Response, 
     next: NextFunction
 ) => {
+    console.log(req.signedCookies);
     const token = req.signedCookies[`${COOKIE_NAME}`];
     if (!token || token.trim() === "") {
         return res.status(401).json({ message: "Token not received" });
@@ -24,10 +25,11 @@ export const verifyToken = async (
             if (err) {
                 reject(err.message);
                 return res.status(401).json({ message: "Token expired" });
+            } else {
+                resolve();
+                res.locals.jwtData = success;
+                return next();
             }
-            resolve();
-            res.locals.jwtData = success;
-            return next();
         });
     })
 };

@@ -9,7 +9,8 @@ import './App.css'
 import { useAuth } from './context/AuthContext'
 
 function App() {
-  console.log(useAuth()?.isLoggedIn);
+  const auth = useAuth();
+
   return <main>
     <Header></Header>
     <Routes>
