@@ -1,6 +1,6 @@
 // provide whole-app context if the user is logged in or not
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import { checkAuthStatus, loginUser, logoutUser } from '../helpers/api-communicator';
+import { checkAuthStatus, loginUser, logoutUser, signupUser } from '../helpers/api-communicator';
 
 type User = {
     name: string;
@@ -37,7 +37,13 @@ export const AuthProvider = ({ children }: {children: ReactNode }) => {
             setIsLoggedIn(true);
         }
     };
-    const signup = async (name: string, email: string, password: string) => {};
+    const signup = async (name: string, email: string, password: string) => {
+        const data = await signupUser(name, email, password);
+        if (data) {
+            setUser({email: data.email, name: data.name});
+            setIsLoggedIn(true);
+        }
+    };
     const logout = async () => {
         await logoutUser();
         setIsLoggedIn(false);

@@ -46,9 +46,9 @@ const Chat = () => {
             getUserChats()
             .then((data) => {
                 setChatMessages([...data.chats]);
-                toast.success("Successfully "
-                )
-            }).catch((error) => {
+                toast.success("Successfully loaded chats", {id: "loadchats"});
+            })
+            .catch((error) => {
                 toast.error("Error while loading chats", {id: "loadchats"});
             });
         }

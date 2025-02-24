@@ -11,7 +11,24 @@ export const loginUser = async (email: string, password: string) => {
     }
     const data = await response.data;
     return data;
-}
+};
+
+export const signupUser = async (
+    name: string, 
+    email: string, 
+    password: string
+) => {
+    const response = await axios.post("/user/signup", {
+        name,
+        email,
+        password
+    });
+    if (response.status !== 201) {
+        throw new Error("Unable to sign up");
+    }
+    const data = await response.data;
+    return data;
+};
 
 export const checkAuthStatus = async () => {
     const response = await axios.get("/user/auth-status");
@@ -20,7 +37,7 @@ export const checkAuthStatus = async () => {
     }
     const data = await response.data;
     return data;
-}
+};
 
 export const sendChatRequest = async (message: string) => {
     const response = await axios.post("/chat/new", {
@@ -31,7 +48,7 @@ export const sendChatRequest = async (message: string) => {
     }
     const data = await response.data;
     return data;
-}
+};
 
 export const getUserChats = async () => {
     console.log("getting user chats");
@@ -41,7 +58,7 @@ export const getUserChats = async () => {
     }
     const data = await res.data;
     return data;
-}
+};
 
 export const deleteUserChats = async () => {
     console.log("getting user chats");
@@ -51,7 +68,7 @@ export const deleteUserChats = async () => {
     }
     const data = await res.data;
     return data;
-}
+};
 
 export const logoutUser = async () => {
     console.log("getting user chats");
@@ -61,4 +78,4 @@ export const logoutUser = async () => {
     }
     const data = await res.data;
     return data;
-}
+};
