@@ -7,5 +7,6 @@ userRoutes.get("/", getAllUsers);
 userRoutes.post("/signup", validate(signupValidator), userSignUp);
 userRoutes.post("/login", validate(loginValidator), userLogin);
 userRoutes.get("/auth-status", verifyToken, verifyUser);
+userRoutes.get("/logout", verifyToken, verifyUser);
 export default userRoutes;
 //# sourceMappingURL=user-routes.js.map

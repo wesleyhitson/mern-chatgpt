@@ -13,4 +13,6 @@ userRoutes.post("/login", validate(loginValidator), userLogin);
 
 userRoutes.get("/auth-status", verifyToken, verifyUser);
 
+userRoutes.get("/logout", verifyToken, verifyUser);
+
 export default userRoutes;
