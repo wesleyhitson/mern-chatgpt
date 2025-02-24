@@ -19,10 +19,13 @@ export const generateChatCompletion = async (
             .json({ message: "User not registered or token malfunctioned" });
         }
         // get all user chats
-        const chats = user.chats.map(({role, content}) => ({role, content})) as ChatCompletionRequestMessage[];
+        const chats = user.chats.map(({role, content}) => ({
+            role, content
+        })) as ChatCompletionRequestMessage[];
         chats.push({content: message, role: "user"});
         user.chats.push({content: message, role: "user"});
         console.log("a");
+
         // send all chats with new one to API
         const config = configureOpenAI();
         const openai = new OpenAIApi(config);
@@ -46,7 +49,7 @@ export const sendChatsToUser = async (
     next: NextFunction
 ) => {
     try {
-        const user = await User.findById({ email: res.locals.jwtData.id });
+        const user = await User.findById(res.locals.jwtData.id);
         if (!user) {
             return res.status(401).send("User not registered or token malfunctioned");
         }

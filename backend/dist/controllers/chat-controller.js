@@ -13,7 +13,9 @@ export const generateChatCompletion = async (req, res, next) => {
                 .json({ message: "User not registered or token malfunctioned" });
         }
         // get all user chats
-        const chats = user.chats.map(({ role, content }) => ({ role, content }));
+        const chats = user.chats.map(({ role, content }) => ({
+            role, content
+        }));
         chats.push({ content: message, role: "user" });
         user.chats.push({ content: message, role: "user" });
         console.log("a");
@@ -36,7 +38,7 @@ export const generateChatCompletion = async (req, res, next) => {
 };
 export const sendChatsToUser = async (req, res, next) => {
     try {
-        const user = await User.findById({ email: res.locals.jwtData.id });
+        const user = await User.findById(res.locals.jwtData.id);
         if (!user) {
             return res.status(401).send("User not registered or token malfunctioned");
         }
