@@ -11,9 +11,7 @@ const TypingAnim = () => {
         'Built with OpenAI',
         2000,
         'Your own customized ChatGPT',
-        1500,
-        'We produce food for Chinchillas',
-        1000
+        1500
       ]}
       wrapper="span"
       speed={50}
