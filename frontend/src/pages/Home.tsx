@@ -1,12 +1,20 @@
-import React from 'react';
+import React from "react";
+import { Box } from "@mui/material";
+import TypingAnim from "../components/typer/TypingAnim";
 
 const Home = () => {
-    return (
-        <div>
-            <h1>Welcome to the Home Page</h1>
-            <p>This is the home page of the MERN-AI chatbot application.</p>
-        </div>
-    );
+    return <Box width={"100%"} height={"100%"}>
+        <Box 
+        sx={{
+            display: "flex", 
+            width: "100%", 
+            mx: "auto", 
+            alignItems: "center", 
+            flexDirection: "column"}}
+        >
+            <Box><TypingAnim /></Box>
+        </Box>
+    </Box>
 };
 
 export default Home;
