@@ -110,7 +110,7 @@ const Chat = () => {
                         <Button 
                             onClick={handleDeleteChats} 
                             sx={{
-                            width: "100px",
+                            width: "200px",
                             mx: "auto",
                             my: "auto",
                             color: "white",
