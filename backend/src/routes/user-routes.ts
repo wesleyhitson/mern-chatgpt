@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers, userSignUp, userLogin, verifyUser } from "../controllers/user-controller.js";
+import { getAllUsers, userSignUp, userLogin, verifyUser, userLogout } from "../controllers/user-controller.js";
 import { loginValidator, signupValidator, validate } from "../utils/validators.js";
 import { verifyToken } from "../utils/token-manager.js";
 
@@ -13,6 +13,6 @@ userRoutes.post("/login", validate(loginValidator), userLogin);
 
 userRoutes.get("/auth-status", verifyToken, verifyUser);
 
-userRoutes.get("/logout", verifyToken, verifyUser);
+userRoutes.get("/logout", verifyToken, userLogout);
 
 export default userRoutes;
