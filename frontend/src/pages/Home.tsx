@@ -10,9 +10,51 @@ const Home = () => {
             width: "100%", 
             mx: "auto", 
             alignItems: "center", 
-            flexDirection: "column"}}
+            flexDirection: "column",
+            mt: 3,
+        }}
         >
             <Box><TypingAnim /></Box>
+            <Box sx={{
+                    width: "100%", 
+                    display: "flex",
+                    flexDirection: { xs: "column", sm: "column", md: "row" },
+                    gap: 5,
+                    my: 10,
+                }}
+            >
+                <img 
+                    src="robot.png" 
+                    alt="robot" 
+                    style={{ width: "200px", margin: "auto" }} 
+                />
+                <img 
+                    className="image-inverted rotate"
+                    src="openai.png" 
+                    alt="openai" 
+                    style={{ width: "200px", margin: "auto" }} 
+                />
+            </Box>
+            <Box sx={{
+                    width: "100%", 
+                    display: "flex",
+                    mx: "auto",
+                }}
+            >
+                <img 
+                    src="chat.png" 
+                    alt="chatbot" 
+                    style={{ 
+                        display: "flex", 
+                        margin: "auto", 
+                        width: "60%", 
+                        borderRadius: 20,
+                        boxShadow: "-5px -5px 105px #64f3d5",
+                        marginTop: 20,
+                        marginBottom: 20
+                     }} 
+                />
+            </Box>
         </Box>
     </Box>
 };
