@@ -77,11 +77,11 @@ const Chat = () => {
                     <Box sx={{ 
                         display: "flex", 
                         width: "100%", 
-                        height: "60vh", 
                         bgcolor: "rgb(17,29,39)",
                         borderRadius: 5,
                         flexDirection: "column",
                         mx: 3,
+                        my: 12
                     }}> 
                         <Avatar sx={{
                             mx: "auto",
@@ -112,7 +112,7 @@ const Chat = () => {
                             sx={{
                             width: "200px",
                             mx: "auto",
-                            my: "auto",
+                            my: 2,
                             color: "white",
                             fontWeight: 700,
                             borderRadius: 3,
