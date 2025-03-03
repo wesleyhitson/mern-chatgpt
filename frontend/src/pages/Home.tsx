@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import TypingAnim from "../components/typer/TypingAnim";
+import Footer from '../components/footer/Footer';
 
 const Home = () => {
     const theme = useTheme();
@@ -58,6 +59,7 @@ const Home = () => {
                 />
             </Box>
         </Box>
+        <Footer />
     </Box>
 };
 

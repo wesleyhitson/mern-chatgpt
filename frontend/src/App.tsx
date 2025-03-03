@@ -1,13 +1,12 @@
-import Header from './components/Header'
-import { Routes, Route } from "react-router-dom"
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import Chat from './pages/Chat'
-import NotFound from './pages/NotFound'
-import './App.css'
-import { useAuth } from './context/AuthContext'
-import Footer from './components/footer/Footer'
+import Header from "./components/Header";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Chat from "./pages/Chat";
+import NotFound from "./pages/NotFound";
+import "./App.css";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
   const auth = useAuth();
@@ -23,7 +22,6 @@ function App() {
       )}
       <Route path="*" element={<NotFound />} />
     </Routes>
-    <Footer />
   </main>
 }
 
